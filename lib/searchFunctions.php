@@ -16,20 +16,22 @@ function searchTextDichiarative($searchText){
 }
 
 
-
-
-
-
-
 /**
  * Funzione di ordine superiore funzione che restituisce una funzione
  * Programmazione Funzionale - dichiarativo 
  */
 function searchText($searchText) {
-    return function ($taskItem) use ($searchText){ 
 
-        $result = strpos($taskItem['taskName'], $searchText) !== false;
-        return $result;
+    return function ($taskItem) use ($searchText){ 
+        $noSpace=trim(filter_var($searchText), FILTER_SANITIZE_STRING);
+        if($noSpace != ""){
+            $result = strripos($taskItem['taskName'], $noSpace) !== false;
+            return $result;
+
+        }else{
+            return count($taskItem);
+        }
+
     };
    
 }
@@ -47,12 +49,27 @@ function searchText($searchText) {
 function searchStatus(string $status){
 
     return function ($taskItem) use ($status){ 
-
-        if ($status!='all') {
-            $result = strpos($taskItem['status'], $status) !==false;
+        if ($status==""){
+            $result = count($taskItem);
         }else{
-            $result = "";
+            if ($status!='all') {
+                $result = strpos($taskItem['status'], $status) !==false;
+            }else{
+                $result = count($taskItem);
+            }
         }
         return $result;
     };
+}
+
+
+
+function statusStyle(string $status){
+    if($status=="progress") {
+        return "primary"; 
+    }else if ($status=="done") {
+        return "secondary"; 
+    }else if ($status=="todo") { 
+        return "danger";
+    } 
 }

@@ -7,11 +7,19 @@ require "./lib/searchFunctions.php";
 $taskList = JSONReader('./dataset/TaskList.json');
 
 
+// $searchText=$_GET['searchText'];
+// $status=($_GET['status']);
+// $taskList = array_filter($taskList, searchText($searchText));
+// $taskList= array_filter($taskList, searchStatus($status));
+
+
+
+
 if(isset($_GET['searchText']) && trim($_GET['searchText'])!==''){
 
     $searchText=trim(filter_var($_GET['searchText'], FILTER_SANITIZE_STRING));
 
-    $taskList = array_filter($taskList, searchTextDichiarative($searchText));
+    $taskList = array_filter($taskList, searchText($searchText));
     
     if(isset($_GET['status']) && ($_GET['status'])!=='all'){
         $status=($_GET['status']);
@@ -38,6 +46,11 @@ if(isset($_GET['searchText']) && trim($_GET['searchText'])!==''){
         $status='all';
     }
 }
+
+
+
+
+
 
 ?>
 
@@ -116,7 +129,7 @@ if(isset($_GET['searchText']) && trim($_GET['searchText'])!==''){
                     <tr>
                         <td><?=$taskName?></td>
                         <td class="text-center">
-                            <span class="badge bg-<?php if($status=="progress") { echo "primary"; }else if ($status=="done") { echo "secondary"; }else if ($status=="todo") { echo "danger"; } ?> text-uppercase"><?=$status?></span>
+                            <span class="badge bg-<?= statusStyle($status)?> text-uppercase"><?=$status?></span>
                         </td> 
                         <td class="text-nowrap">
                             <?=$expirationDate?>
