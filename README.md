@@ -25,19 +25,19 @@ Git:
 
 ## Realizzare i layout in php
 
-- [ ] Partendo dal [index.html](./index.html) e implementare le funzionalità di ricerca.
+- [x] Partendo dal [index.html](./index.html) e implementare le funzionalità di ricerca.
 
 
 **Devono funzionare i seguenti test in locale.**
 
 Tutti i test devono essere lanciati partendo dalla cartella del progetto
 
-- [ ] I test contengono errori negli include che devono essere corretti.
+- [x] I test contengono errori negli include che devono essere corretti.
 
 Nel file [searchFunctions.php](lib/searchFunctions.php)
 
-- [ ] php [lib/searchStatusTest.php](lib/searchTextTest.php) 
-- [ ] php [lib/searchTextTest.php](lib/searchTextTest.php) 
+- [x] php [lib/searchStatusTest.php](lib/searchTextTest.php) 
+- [x] php [lib/searchTextTest.php](lib/searchTextTest.php) 
 
 
 # ricerca combinata testo e status
