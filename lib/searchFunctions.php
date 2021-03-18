@@ -25,7 +25,7 @@ function searchText($searchText) {
     return function ($taskItem) use ($searchText){ 
         $noSpace=trim(filter_var($searchText), FILTER_SANITIZE_STRING);
         if($noSpace != ""){
-            $result = strripos($taskItem['taskName'], $noSpace) !== false;
+            $result = stripos($taskItem['taskName'], $noSpace) !== false;
             return $result;
 
         }else{
@@ -46,7 +46,7 @@ function searchText($searchText) {
 // } 
 
 
-function searchStatus(string $status){
+function searchStatus($status){
 
     return function ($taskItem) use ($status){ 
         if ($status==""){
@@ -64,7 +64,7 @@ function searchStatus(string $status){
 
 
 
-function statusStyle(string $status){
+function statusStyle($status){
     if($status=="progress") {
         return "primary"; 
     }else if ($status=="done") {
