@@ -5,6 +5,13 @@ require "./lib/searchFunctions.php";
 
 $taskList = JSONReader("./dataset/TaskList.json");
 
+
+// $searchText=isset($_GET['searchText']);
+// $status=isset($_GET['status']);
+
+// crossedSearch($searchText, $status, $taskList);
+
+
 if(isset($_GET['searchText']) && trim($_GET['searchText'])!==''){
 
     $searchText=$_GET['searchText'];
@@ -67,19 +74,19 @@ if(isset($_GET['searchText']) && trim($_GET['searchText'])!==''){
                     <div class="fw-bold pe-2 w-100">Stato attività</div>
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="status" id="all" value="all" <?php if (isset($status)&& $status== "all") echo "checked";?>>
-                        <label class="form-check-label" >tutti</label>
+                        <label class="form-check-label" for="all" >tutti</label>
                       </div>
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="status" id="todo" value="todo" <?php if (isset($status)&& $status== "todo") echo "checked";?>>
-                        <label class="form-check-label" >da fare</label>
+                        <label class="form-check-label" for="todo" >da fare</label>
                       </div>
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="status" id="progress" value="progress" <?php if (isset($status)&& $status== "progress") echo "checked";?>>
-                        <label class="form-check-label" >in lavorazione</label>
+                        <label class="form-check-label" for="progress" >in lavorazione</label>
                       </div>
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="status" id="done" value="done" <?php if (isset($status)&& $status== "done") echo "checked";?>>
-                        <label class="form-check-label" >fatto</label>
+                        <label class="form-check-label" for="done" >fatto</label>
                       </div>
                 </div>
             
